@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Art Institute of Chicago Gallery - React Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application built with **TypeScript** and **Vite** that displays artwork data from the Art Institute of Chicago API. This project implements server-side pagination and persistent row selection using **PrimeReact**.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**Deployed URL:** [Insert your Cloudflare/Netlify Link Here]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+* **Framework:** React 18 (Vite)
+* **Language:** TypeScript
+* **UI Components:** PrimeReact
+* **Styling:** PrimeFlex & CSS
+* **API:** Art Institute of Chicago Public API
 
-## React Compiler
+## ✨ Key Features
+* **Server-Side Pagination:** Fetches only the required data for the current page (12 rows per page) to optimize performance.
+* **Persistent Selection:** Selected rows remain checked even when navigating between different pages, implemented using `dataKey` and state synchronization.
+* **Custom Bulk Selection:** A custom overlay panel allowing users to select $N$ number of rows.
+* **Zero-Prefetch Logic:** To prevent memory issues and unnecessary API calls, the bulk selection logic strictly operates on already-fetched data as per assignment requirements.
+* **Responsive UI:** Fully responsive data table with a dynamic selection counter.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Installation & Setup
 
-## Expanding the ESLint configuration
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/moody-guru/art-institute-api.git](https://github.com/moody-guru/art-institute-api.git)
+    cd art-institute-api
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3.  **Run Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+4.  **Build for Production:**
+    ```bash
+    npm run build
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛡️ Implementation Details
+### Persistent Selection Strategy
+The application manages selection state using an array of `Artwork` objects. By providing the `dataKey="id"` prop to the PrimeReact `DataTable`, the component internally tracks which IDs are selected. When a user navigates back to a previously visited page, the component compares the loaded row IDs with the stored selection state to maintain the "checked" status.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Custom Selection Overlay
+The bulk selection feature is triggered by a chevron icon in the table header. It allows selecting multiple rows from the current view without triggering recursive API calls, adhering to the performance constraints of the assignment.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 👤 Author
+* **Pushkar Sahu**
+* GitHub: [@moody-guru](https://github.com/moody-guru)
