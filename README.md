@@ -52,3 +52,9 @@ The bulk selection feature is triggered by a chevron icon in the table header. I
 ## 👤 Author
 * **Pushkar Sahu**
 * GitHub: [@moody-guru](https://github.com/moody-guru)
+
+
+
+<img width="1914" height="1014" alt="image" src="https://github.com/user-attachments/assets/8301b3b5-73f5-4035-a675-681e08484ef3" />
+<img width="1092" height="812" alt="image" src="https://github.com/user-attachments/assets/e8f67466-5d82-42bd-8b44-cdfa2ff9f5b5" />
+
